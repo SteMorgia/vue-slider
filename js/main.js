@@ -1,6 +1,7 @@
 const app = new Vue ({
     el: '#app',
     data: {
+        slideCorrente: 0,
         images: [
             {
                 url: 'http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg',
@@ -29,9 +30,26 @@ const app = new Vue ({
                 title: 'Colombia',
                 description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.'
             },
-        ]
+        ],
+    },
+    methods: {
+        next() {
             
-    }
+            if (this.slideCorrente == (this.images.length -1)) {
+                this.slideCorrente = 0;
+            } else {
+                this.slideCorrente ++;
+            }
+        }, 
+        prev() {
+            
+            if (this.slideCorrente == 0) {
+                this.slideCorrente = (this.images.length -1);
+            } else {
+                this.slideCorrente --;
+            }
+        }
+    } 
 })
 
 

@@ -35,10 +35,10 @@
                             <div class="my-carousel-images">
                                 
                                 <div class="my-carousel-item active">
-                                    <img class="img-fluid" src="http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg" alt="Svezia">
+                                    <img class="img-fluid" :src="images[slideCorrente].url" :alt="images[slideCorrente].url">
                                     <div class="item-description px-3">
-                                        <h2>Svezia</h2>
-                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.</p>
+                                        <h2>{{ images[slideCorrente].title }}</h2>
+                                        <p>{{ images[slideCorrente].description }}</p>
                                     </div>
                                 </div>
     
@@ -46,18 +46,18 @@
                             </div>
                             <div class="my-thumbnails position-relative">
     
-                                <div v-for="image in images" class="my-thumbnail active">
+                                <div v-for="(image, indice) in images" :class="(slideCorrente==indice)? 'active': ' ' " class="my-thumbnail">
                                     <img class="img-fluid" :src="image.url" :alt=" 'Thumbnail of '+image.title+' picture' ">
                                 </div>
     
     
                                 <!-- prev -->
-                                <div class="my-previous position-absolute">
+                                <div @click="prev" class="my-previous position-absolute">
                                     <span class="my-prev-hook"></span>
                                 </div>
                                 <!-- immagini interne -->
                                 <!-- next -->
-                                <div class="my-next position-absolute">
+                                <div @click="next" class="my-next position-absolute">
                                     <span class="my-next-hook"></span>
                                 </div>
                             </div>
